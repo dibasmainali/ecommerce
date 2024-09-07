@@ -10,7 +10,7 @@ const KeyboardDetails = ({ keyboard }) => {
       <p className="text-gray-600 mb-2">{keyboard.description}</p>
       <p className="text-gray-800 font-bold mb-2">{keyboard.priceRange}</p>
       <p className="text-gray-600 mb-2"><strong>Type:</strong> {keyboard.type}</p>
-      <p className="text-gray-600 mb-2"><strong>Features:</strong> {keyboard.features}</p>
+      <p className="text-gray-600 mb-2" ><strong>Features:</strong> {keyboard.features}</p>
     </div>
   );
 };

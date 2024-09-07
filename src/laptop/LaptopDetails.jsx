@@ -1,26 +1,41 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Apis from "../apis/LaptopApi"; // Adjust the path as needed
+import LaptopApis from "../apis/LaptopApi";
+import Breadcrumb from "../component/Breadcrumb";
 
-const Details = () => {
-  const { id } = useParams(); // Get the laptop ID from the URL params
-  const laptop = Apis.find((item) => item.id === parseInt(id));
+const LaptopDetails = () => {
+  const { name } = useParams();
+  const decodedName = name.replace(/-/g, ' '); // Replace hyphens with spaces
+
+  const laptop = LaptopApis.find(
+    (item) => item.name.toLowerCase() === decodedName.toLowerCase()
+  );
 
   if (!laptop) {
     return <div>Laptop not found</div>;
   }
 
-  // Extract the original price and calculate the discounted price
-  const originalPrice = parseFloat(
-    laptop.priceRange.split("-")[0].replace("$", "").replace(",", "").trim()
-  );
+  // Safely handle price extraction and calculation
+  const priceRange = laptop.priceRange
+    .split("-")[0]
+    .replace("$", "")
+    .replace(",", "")
+    .trim();
+  const originalPrice = parseFloat(priceRange) || 0;
   const discountedPrice = originalPrice - originalPrice * 0.05;
   const discountedAmount = originalPrice - discountedPrice;
+  const formatPrice = (price) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(price);
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row p-6 space-y-4 md:space-y-0 md:space-x-8">
-        <div className="md:flex-1 flex mx-44">
+    <div className="p-6">
+      <Breadcrumb itemName={laptop.name} />
+
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+        <div className="md:w-1/2 mx-auto md:mx-0">
           <img
             src={laptop.imageUrl}
             alt={laptop.name}
@@ -28,26 +43,28 @@ const Details = () => {
           />
         </div>
 
-        <div className="mr-64 md:flex-1">
+        <div className="md:w-1/2">
           <h1 className="text-2xl font-semibold mb-4">{laptop.name}</h1>
-          <p className="text-justify">{laptop.description}</p>
-          <br />
-          <hr />
+          <p className="text-justify mb-4">{laptop.description}</p>
+
+          <hr className="mb-4" />
+
           <div className="mb-4">
-            <div className="flex">
-              <p>Actual amount:</p>
+            <div className="flex items-center space-x-2">
+              <p className="font-semibold">Actual amount:</p>
               <p className="text-xl text-gray-600 line-through">
-                ${originalPrice.toFixed(2)}
+                {formatPrice(originalPrice)}
               </p>
             </div>
-            <p className="text-xl text-red-600">
-              Price: ${discountedPrice.toFixed(2)}
+            <p className="text-xl text-red-600 font-semibold">
+              Price: {formatPrice(discountedPrice)}
             </p>
             <p className="text-xl text-gray-600">
-              You save: ${discountedAmount.toFixed(2)}
+              You save: {formatPrice(discountedAmount)}
               <span className="text-red-600"> (5%)</span>
             </p>
           </div>
+
           <div className="space-y-2">
             <ul className="list-none">
               <li>
@@ -61,6 +78,7 @@ const Details = () => {
               </li>
             </ul>
           </div>
+
           <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded mt-6">
             Add to Cart
           </button>
@@ -70,4 +88,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default LaptopDetails;

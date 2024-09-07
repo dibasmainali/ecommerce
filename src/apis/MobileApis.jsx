@@ -1,4 +1,4 @@
-const mobiles = [
+const MobileApis = [
   {
     id: 1,
     name: "iPhone 13 Pro",
@@ -224,4 +224,4 @@ const mobiles = [
   }
 ];
 
-export default mobiles;
+export default MobileApis;

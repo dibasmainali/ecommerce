@@ -1,4 +1,4 @@
-const Apis = [
+const LaptopApi = [
   {
     id: 1,
     name: "Dell XPS 13",
@@ -227,4 +227,4 @@ const Apis = [
   },
 ];
 
-export default Apis;
+export default LaptopApi;
