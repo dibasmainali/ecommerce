@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import LaptopApis from "../apis/LaptopApi";
 import Breadcrumb from "../component/Breadcrumb";
+import Specification from "./Specification";
 
 const LaptopDetails = () => {
   const { name } = useParams();
@@ -35,7 +36,7 @@ const LaptopDetails = () => {
       <Breadcrumb itemName={laptop.name} />
 
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-        <div className="md:w-1/2 mx-auto md:mx-0">
+        <div className="md:w-1/2 mx-auto md:mx-0 mt-24">
           <img
             src={laptop.imageUrl}
             alt={laptop.name}
@@ -76,6 +77,18 @@ const LaptopDetails = () => {
               <li>
                 <strong>Processor:</strong> {laptop.processor}
               </li>
+              <li>
+                <strong>Graphics:</strong> {laptop.graphics}
+              </li>
+              <li>
+                <strong>Operating System:</strong> {laptop.os}
+              </li>
+              <li>
+                <strong>Color:</strong> {laptop.color}
+              </li>
+              <li>
+                <strong>Warranty:</strong> {laptop.warranty}
+              </li>
             </ul>
           </div>
 
@@ -84,6 +97,8 @@ const LaptopDetails = () => {
           </button>
         </div>
       </div>
+
+      <Specification laptop={laptop} />
     </div>
   );
 };
