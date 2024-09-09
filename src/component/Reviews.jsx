@@ -1,55 +1,101 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-function Reviews() {
+const Review = () => {
+  const [reviews, setReviews] = useState([]);
+  const [name, setName] = useState('');
+  const [review, setReview] = useState('');
+  const [file, setFile] = useState(null);
+  const [rating, setRating] = useState(0);
+
+  useEffect(() => {
+    const storedReviews = JSON.parse(localStorage.getItem('reviews'));
+    if (storedReviews) {
+      setReviews(storedReviews);
+    }
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newReview = { name, review, file: file ? URL.createObjectURL(file) : null, rating };
+    const updatedReviews = [...reviews, newReview];
+    setReviews(updatedReviews);
+    localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+    setName('');
+    setReview('');
+    setFile(null);
+    setRating(0);
+  };
+
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
+
   return (
-    <div>
-      <section id="testimonials" className="my-12 bg-gray-100 p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold mb-4 text-center">What Our Customers Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TestimonialCard 
-              name="John Doe"
-              feedback="Amazing products and great customer service!"
-              imageUrl="https://via.placeholder.com/100"
-            />
-            <TestimonialCard 
-              name="Jane Smith"
-              feedback="I love my new laptop. Highly recommend Tech Store!"
-              imageUrl="https://via.placeholder.com/100"
-            />
-            <TestimonialCard 
-              name="Sam Wilson"
-              feedback="Fast shipping and excellent quality. Will buy again!"
-              imageUrl="https://via.placeholder.com/100"
-            />
-          </div>
-        </section>
-    </div>
-  )
-}
-
-function TestimonialCard({ name, feedback, imageUrl }) {
-    return (
-      <div className="p-6 bg-white shadow-md rounded-lg">
-        <div className=" flex items-center">
-          <img className="w-16 h-16 rounded-full mr-4" src={imageUrl} alt={name} />
-          <div>
-            <h3 className="text-sm font-semibold">{name}</h3>
-            <p className="text-sm">{feedback}</p>
+    <div className="bg-teal-100 p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+      <h2 className="text-2xl font-bold mb-6 text-center text-orange-700">Submit Your Review</h2>
+      <form onSubmit={handleSubmit} className="mb-6 space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-2">Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="border border-teal-500 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-orange-700"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-2">Review:</label>
+          <textarea
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            className="border border-teal-500 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-orange-700"
+            required
+          ></textarea>
+        </div>
+       
+        <div>
+          <label className="block text-sm font-medium mb-2">Rating:</label>
+          <div className="flex space-x-2">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                type="button"
+                key={star}
+                className={`text-2xl ${rating >= star ? 'text-orange-700' : 'text-gray-400'}`}
+                onClick={() => handleRating(star)}
+              >
+                ★
+              </button>
+            ))}
           </div>
         </div>
+        <button type="submit" className="bg-orange-700 text-white p-3 rounded-lg w-full hover:bg-orange-800 transition duration-300">Submit</button>
+      </form>
+      <h2 className="text-2xl font-bold mb-6 text-center text-orange-700">Reviews</h2>
+      <div className="space-y-4">
+        {reviews.map((review, index) => (
+          <div key={index} className="bg-orange-100 p-4 rounded-lg shadow-md">
+            <h3 className="text-lg font-bold">{review.name}</h3>
+            <p className="mt-2">{review.review}</p>
+            <div className="flex space-x-1 mt-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span key={star} className={`text-xl ${review.rating >= star ? 'text-orange-700' : 'text-gray-400'}`}>
+                  ★
+                </span>
+              ))}
+            </div>
+            {review.file && (
+              <img
+                src={review.file}
+                alt="Review"
+                className="mt-4 max-w-full h-auto rounded-lg"
+              />
+            )}
+          </div>
+        ))}
       </div>
-    )
+    </div>
+  );
 };
-// const TestimonialCard = ({ name, feedback, imageUrl }) => {
-//     return (
-//       <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-//         <img src={imageUrl} alt={name} className="w-24 h-24 object-cover rounded-full mx-auto" />
-//         <h3 className="text-xl font-semibold mt-4 text-center">{name}</h3>
-//         <p className="text-gray-700 mt-2 text-center">{feedback}</p>
-//       </div>
-//     );
-//   };
-  
 
-
-export default Reviews
+export default Review;
