@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState, useContext } from "react"; // Make sure useContext is imported
 import { useParams } from "react-router-dom";
 import LaptopApis from "../apis/LaptopApi";
+import { CartContext } from "../component/CartContext"; // Import CartContext
 import Breadcrumb from "../component/Breadcrumb";
-import Specification from "./Specification";
+import Specification from "./Specification"; // Assuming Specification component exists
+import Reviews from "../component/Reviews"; // Assuming Reviews component exists
 
 const LaptopDetails = () => {
   const { name } = useParams();
-  const decodedName = name.replace(/-/g, ' '); // Replace hyphens with spaces
+  const decodedName = name.replace(/-/g, " "); // Replace hyphens with spaces
 
   const laptop = LaptopApis.find(
     (item) => item.name.toLowerCase() === decodedName.toLowerCase()
   );
+
+  const [quantity, setQuantity] = useState(1);
+  const [showSpecifications, setShowSpecifications] = useState(true); // State for toggling between specs and reviews
+  const { addToCart } = useContext(CartContext); // Use CartContext to add items to cart
 
   if (!laptop) {
     return <div>Laptop not found</div>;
@@ -30,6 +36,18 @@ const LaptopDetails = () => {
       style: "currency",
       currency: "USD",
     }).format(price);
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => addToCart(laptop, quantity); // Add item to cart
 
   return (
     <div className="p-6">
@@ -80,25 +98,65 @@ const LaptopDetails = () => {
               <li>
                 <strong>Graphics:</strong> {laptop.graphics}
               </li>
-              <li>
-                <strong>Operating System:</strong> {laptop.os}
-              </li>
-              <li>
-                <strong>Color:</strong> {laptop.color}
-              </li>
-              <li>
-                <strong>Warranty:</strong> {laptop.warranty}
-              </li>
             </ul>
           </div>
 
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded mt-6">
+          <div className="flex items-center mt-6 space-x-4">
+            <div>
+              <strong>Quantity:</strong>
+            </div>
+            <button
+              onClick={handleDecrease}
+              className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-l"
+            >
+              -
+            </button>
+            <span>{quantity}</span>
+            <button
+              onClick={handleIncrease}
+              className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-r"
+            >
+              +
+            </button>
+            <div>({formatPrice(discountedPrice * quantity)})</div>
+          </div>
+
+          <button
+            onClick={handleAddToCart}
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded mt-6"
+          >
             Add to Cart
           </button>
         </div>
       </div>
 
-      <Specification laptop={laptop} />
+      {/* Toggle for Specifications and Reviews */}
+      <div className="flex flex-col justify-center space-x-4 mt-8 lg:ml-20">
+        <div>
+          <button
+            onClick={() => setShowSpecifications(true)}
+            className={`px-4 py-2 font-semibold rounded ${
+              showSpecifications ? "underline" : ""
+            }`}
+          >
+            Specifications
+          </button>
+          <button
+            onClick={() => setShowSpecifications(false)}
+            className={`px-4 py-2 font-semibold rounded ${
+              !showSpecifications ? "underline" : ""
+            }`}
+          >
+            Reviews
+          </button>
+        </div>
+
+        {showSpecifications ? (
+          <Specification laptop={laptop} />
+        ) : (
+          <Reviews product={laptop} /> // Pass the laptop data to reviews
+        )}
+      </div>
     </div>
   );
 };

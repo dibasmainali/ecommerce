@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FlashSale from "./component/FlashSale";
 import LatestArrival from "./component/LatestArrival";
+import Slider from "./component/Slider";
 
 const Home = () => {
   return (
@@ -92,10 +93,15 @@ const Home = () => {
           </div>
         </>
       </div>
+      <Slider/>
       <LatestArrival/>
+
       <FlashSale /> {/* Flash Sale Component */}
     </div>
   );
 };
 
 export default Home;
+
+
+

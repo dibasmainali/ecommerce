@@ -2,10 +2,11 @@ import React from "react";
 
 function Specification({ laptop }) {
   return (
-    <div>
-      <hr className="m-10"></hr>
-      <h2 className="text-3xl underline mb-4 ml-40">Specification</h2>
-      <div className="mt-8 ml-20 flex">
+    <div className="sm:ml-1">
+      <h2 className="text-3xl underline mb-4 lg:ml-40 sm:ml-2">
+        Specification
+      </h2>
+      <div className="mt-8 lg:ml-20 sm:ml-1 flex flex-wrap">
         <div>
           <ul className="list-none space-y-2">
             <li>
