@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]); // Corrected state name
 
   // Function to add an item to the cart
   const addToCart = (newItem) => {
@@ -12,12 +12,14 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === newItem.id);
       if (existingItem) {
+        // Update quantity of the existing item
         return prevItems.map((item) =>
           item.id === newItem.id
             ? { ...item, quantity: item.quantity + newItem.quantity }
             : item
         );
       } else {
+        // Add new item to cart
         return [...prevItems, newItem];
       }
     });

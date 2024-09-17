@@ -13,7 +13,7 @@ function MobileSpecification({ mobile }) {
               <strong>Name:</strong> {mobile.name}
             </li>
             <li>
-              <strong>Price Range:</strong> {mobile.priceRange}
+              <strong>Price Range:$</strong> {mobile.price}
             </li>
             <li>
               <strong>Screen Size:</strong> {mobile.screenSize}

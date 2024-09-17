@@ -23,12 +23,8 @@ const LaptopDetails = () => {
   }
 
   // Safely handle price extraction and calculation
-  const priceRange = laptop.priceRange
-    .split("-")[0]
-    .replace("$", "")
-    .replace(",", "")
-    .trim();
-  const originalPrice = parseFloat(priceRange) || 0;
+  const price = laptop.price.split("-")[0].replace(/,/g, "").trim();
+  const originalPrice = parseFloat(price) || 0;
   const discountedPrice = originalPrice - originalPrice * 0.05;
   const discountedAmount = originalPrice - discountedPrice;
   const formatPrice = (price) =>
@@ -47,7 +43,16 @@ const LaptopDetails = () => {
     }
   };
 
-  const handleAddToCart = () => addToCart(laptop, quantity); // Add item to cart
+  // Reuse this function in the button click
+  const handleAddToCart = () => {
+    addToCart({
+      id: laptop.id,
+      name: laptop.name,
+      price: discountedPrice * quantity, // Use discounted price and multiply by quantity
+      imageUrl: laptop.imageUrl,
+      quantity: quantity, // Pass the correct quantity
+    });
+  };
 
   return (
     <div className="p-6">
@@ -122,7 +127,7 @@ const LaptopDetails = () => {
           </div>
 
           <button
-            onClick={handleAddToCart}
+            onClick={handleAddToCart} // Use the existing handleAddToCart function
             className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded mt-6"
           >
             Add to Cart

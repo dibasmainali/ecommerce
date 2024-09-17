@@ -2,7 +2,7 @@ const MobileApis = [
   {
     id: 1,
     name: "iPhone 13 Pro",
-    priceRange: "$999",
+    price: "999",
     screenSize: '6.1"',
     displayType: "Super Retina XDR OLED, 120Hz, HDR10, 1000 nits",
     storageCapacity: "128GB/256GB/512GB/1TB",
@@ -27,7 +27,7 @@ const MobileApis = [
   {
     id: 2,
     name: "Google Pixel 6",
-    priceRange: "$599",
+    price: "599",
     screenSize: '6.4"',
     displayType: "AMOLED, 90Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -53,7 +53,7 @@ const MobileApis = [
   {
     id: 3,
     name: "OnePlus 9 Pro",
-    priceRange: "$969",
+    price: "969",
     screenSize: '6.7"',
     displayType: "Fluid AMOLED, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -78,7 +78,7 @@ const MobileApis = [
   {
     id: 4,
     name: "Samsung Galaxy S21 Ultra",
-    priceRange: "$1,199",
+    price: "1,199",
     screenSize: '6.8"',
     displayType: "Dynamic AMOLED 2X, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB/512GB",
@@ -103,7 +103,7 @@ const MobileApis = [
   {
     id: 5,
     name: "Xiaomi Mi 11",
-    priceRange: "$749",
+    price: "749",
     screenSize: '6.81"',
     displayType: "AMOLED, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -128,7 +128,7 @@ const MobileApis = [
   {
     id: 6,
     name: "Sony Xperia 1 III",
-    priceRange: "$1,299",
+    price: "1,299",
     screenSize: '6.5"',
     displayType: "OLED, 120Hz, HDR BT.2020",
     storageCapacity: "256GB/512GB",
@@ -153,7 +153,7 @@ const MobileApis = [
   {
     id: 7,
     name: "Oppo Find X3 Pro",
-    priceRange: "$1,149",
+    price: "1,149",
     screenSize: '6.7"',
     displayType: "AMOLED, 120Hz, HDR10+",
     storageCapacity: "256GB/512GB",
@@ -178,7 +178,7 @@ const MobileApis = [
   {
     id: 8,
     name: "Huawei Mate 40 Pro",
-    priceRange: "$1,099",
+    price: "1,099",
     screenSize: '6.76"',
     displayType: "OLED, 90Hz, HDR10",
     storageCapacity: "256GB/512GB",
@@ -203,7 +203,7 @@ const MobileApis = [
   {
     id: 9,
     name: "Realme GT Neo 2",
-    priceRange: "$499",
+    price: "499",
     screenSize: '6.62"',
     displayType: "AMOLED, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -228,7 +228,7 @@ const MobileApis = [
   {
     id: 10,
     name: "Vivo X70 Pro+",
-    priceRange: "$1,199",
+    price: "1,199",
     screenSize: '6.78"',
     displayType: "AMOLED, 120Hz, HDR10+",
     storageCapacity: "256GB/512GB",
@@ -253,7 +253,7 @@ const MobileApis = [
   {
     id: 11,
     name: "Google Pixel 6 Pro",
-    priceRange: "$899",
+    price: "899",
     screenSize: '6.71"',
     displayType: "LTPO AMOLED, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB/512GB",
@@ -278,7 +278,7 @@ const MobileApis = [
   {
     id: 12,
     name: "OnePlus 9 Pro",
-    priceRange: "$969",
+    price: "969",
     screenSize: '6.7"',
     displayType: "Fluid AMOLED, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -303,7 +303,7 @@ const MobileApis = [
   {
     id: 13,
     name: "Asus ROG Phone 5",
-    priceRange: "$999",
+    price: "999",
     screenSize: '6.78"',
     displayType: "AMOLED, 144Hz, HDR10+",
     storageCapacity: "128GB/256GB/512GB",
@@ -328,7 +328,7 @@ const MobileApis = [
   {
     id: 14,
     name: "Motorola Edge 20 Pro",
-    priceRange: "$699",
+    price: "699",
     screenSize: '6.7"',
     displayType: "OLED, 144Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -353,7 +353,7 @@ const MobileApis = [
   {
     id: 15,
     name: "ZTE Axon 30 Ultra",
-    priceRange: "$749",
+    price: "749",
     screenSize: '6.67"',
     displayType: "AMOLED, 144Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -378,7 +378,7 @@ const MobileApis = [
   {
     id: 16,
     name: "Nokia XR20",
-    priceRange: "$549",
+    price: "549",
     screenSize: '6.67"',
     displayType: "IPS LCD, 60Hz, HDR10",
     storageCapacity: "64GB/128GB",
@@ -403,7 +403,7 @@ const MobileApis = [
   {
     id: 17,
     name: "Sony Xperia 1 III",
-    priceRange: "$1,299",
+    price: "1,299",
     screenSize: '6.5"',
     displayType: "OLED, 120Hz, HDR BT.2020",
     storageCapacity: "256GB/512GB",
@@ -428,7 +428,7 @@ const MobileApis = [
   {
     id: 18,
     name: "Realme GT Master",
-    priceRange: "$399",
+    price: "399",
     screenSize: '6.43"',
     displayType: "Super AMOLED, 120Hz, HDR10+",
     storageCapacity: "128GB/256GB",
@@ -453,7 +453,7 @@ const MobileApis = [
   {
     id: 19,
     name: "Oppo Find X3 Pro",
-    priceRange: "$1,149",
+    price: "1,149",
     screenSize: '6.7"',
     displayType: "LTPO AMOLED, 120Hz, HDR10+",
     storageCapacity: "256GB/512GB",
@@ -478,7 +478,7 @@ const MobileApis = [
   {
     id: 20,
     name: "Xiaomi Mi 11 Ultra",
-    priceRange: "$1,199",
+    price: "1,199",
     screenSize: '6.81"',
     displayType: "AMOLED, 120Hz, HDR10+",
     storageCapacity: "256GB/512GB",

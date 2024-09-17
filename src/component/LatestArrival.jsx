@@ -4,16 +4,22 @@ import LaptopApis from "../apis/LaptopApi";
 
 const LatestArrival = () => {
   const latestProducts = LaptopApis.slice(-4).reverse();
+  
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg mb-6"
-     style={{
+    <div
+      className="p-6 bg-white rounded-lg shadow-lg mb-6"
+      style={{
         backgroundImage:
           'url("https://media.istockphoto.com/id/1330248664/vector/hexagonal-and-rectangular-abstracts-with-a-digital-network-image-blue-gradient-background.jpg?s=612x612&w=0&k=20&c=JgeKAVSAO_S-A0r61OP99BqNduP0CXE7gvc0jjoAD4Q=")',
-      }}>
+      }}
+    >
       <h2 className="text-2xl font-bold mb-4">Latest Arrivals</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {latestProducts.map((product) => {
-          const price = parseInt(product.price);
+          const price = product.price.replace(",", "")
+          ;
+          
+          
 
           return (
             <div
@@ -31,10 +37,13 @@ const LatestArrival = () => {
               </p>
               <div className="flex flex-col gap-3">
                 <span className="text-red-500 line-through">
-                  {product.priceRange}
+                  ${product.price}
                 </span>
                 <span className="text-green-500 font-bold">
-                  ${product.priceRange - price * 0.05}
+                  $
+                  {price
+                    ? (price - price * 0.05).toFixed(2)
+                    : "Price not available"}
                 </span>
               </div>
               <Link

@@ -1,57 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import MobileApis from "../apis/MobileApis.jsx"; // Correct path to import the mobile data
-import Breadcrumb from "../component/Breadcrumb.jsx";
-import { FaSpinner } from "react-icons/fa"; // Import a spinner icon
-import MobileSpecification from "./MobileSpecification.jsx";
-import Reviews from "../component/Reviews.jsx"; // Assuming you have a component for reviews
+import MobileApis from "../apis/MobileApis"; // Assuming MobileApis is imported
+import Breadcrumb from "../component/Breadcrumb"; // Assuming Breadcrumb component exists
+import MobileSpecification from "./MobileSpecification"; // Assuming MobileSpecification component exists
+import Reviews from "../component/Reviews"; // Assuming Reviews component exists
+import { CartContext } from "../component/CartContext"; // Import CartContext for cart functionality
 
-const MobilesDetails = () => {
-  const { name } = useParams(); // get the mobile name from the URL
-  const [mobileDetails, setMobileDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
-  const [showSpecifications, setShowSpecifications] = useState(true); // State to toggle between specifications and reviews
+const MobileDetails = () => {
+  const { name } = useParams();
+  const decodedName = name.replace(/-/g, " "); // Replace hyphens with spaces for matching
 
-  useEffect(() => {
-    // Find the mobile that matches the name from the URL
-    const decodedName = name.replace(/-/g, " ");
-    const selectedMobile = MobileApis.find(
-      (mobile) => mobile.name.toLowerCase() === decodedName.toLowerCase()
-    );
-    if (selectedMobile) {
-      setMobileDetails(selectedMobile);
-    } else {
-      console.error("Mobile not found.");
-    }
-    setLoading(false);
-  }, [name]);
+  const mobile = MobileApis.find(
+    (item) => item.name.toLowerCase() === decodedName.toLowerCase()
+  );
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <FaSpinner className="animate-spin text-4xl text-gray-500" />
-      </div>
-    );
-  }
+  const [quantity, setQuantity] = useState(1); // Manage quantity
+  const [showSpecifications, setShowSpecifications] = useState(true); // Toggle for specs/reviews
+  const { addToCart } = useContext(CartContext); // Use CartContext to manage cart state
 
-  if (!mobileDetails) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-xl text-red-500">Mobile not found.</p>
-      </div>
-    );
+  if (!mobile) {
+    return <div>Mobile not found</div>;
   }
 
   // Safely handle price extraction and calculation
-  const priceRange = mobileDetails.priceRange
-    .split("-")[0]
-    .replace("$", "")
-    .replace(",", "")
-    .trim();
-  const originalPrice = parseFloat(priceRange) || 0;
-  const discountedPrice = originalPrice - originalPrice * 0.05;
+  const price = mobile.price.split("-")[0].replace(/,/g, "").trim(); // Remove the comma
+  const originalPrice = parseFloat(price) || 0; // Parse the price to float
+  const discountedPrice = originalPrice - originalPrice * 0.05; // Calculate discounted price
   const discountedAmount = originalPrice - discountedPrice;
+
+  // Format price function
   const formatPrice = (price) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -68,72 +45,100 @@ const MobilesDetails = () => {
     }
   };
 
+  const handleAddToCart = () => {
+    addToCart({
+      id: mobile.id,
+      name: mobile.name,
+      price: discountedPrice * quantity, // Use discounted price and multiply by quantity
+      imageUrl: mobile.imageUrl,
+      quantity: 1, // Pass the correct quantity
+    });
+  };
+
   return (
-    <div>
-      <Breadcrumb />
-      <div className="mx-4 md:mx-14 mt-16 bg-white p-8 border rounded-lg shadow-lg">
-        <div className="flex flex-col md:flex-row">
+    <div className="p-6">
+      <Breadcrumb itemName={mobile.name} /> {/* Display breadcrumb */}
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+        <div className="md:w-1/2 mx-auto md:mx-0 mt-24">
           <img
-            src={mobileDetails.imageUrl}
-            alt={mobileDetails.name}
-            className="w-full h-64 object-cover mb-4 md:mb-0 rounded-lg md:w-1/2 md:h-auto"
+            src={mobile.imageUrl}
+            alt={mobile.name}
+            className="w-full max-w-md border border-gray-300 rounded-lg p-2"
           />
-          <div className="md:ml-8 lg:flex lg:flex-col lg:flex-wrap">
-            <h2 className="text-2xl font-bold mb-4">{mobileDetails.name}</h2>
-            <ul className="mb-4 space-y-2">
+        </div>
+
+        <div className="md:w-1/2">
+          <h1 className="text-2xl font-semibold mb-4">{mobile.name}</h1>
+          <p className="text-justify mb-4">{mobile.description}</p>
+
+          <hr className="mb-4" />
+
+          <div className="mb-4">
+            <div className="flex items-center space-x-2">
+              <p className="font-semibold">Actual amount:</p>
+              <p className="text-xl text-gray-600 line-through">
+                {formatPrice(originalPrice)}
+              </p>
+            </div>
+            <p className="text-xl text-red-600 font-semibold">
+              Price: {formatPrice(discountedPrice)}
+            </p>
+            <p className="text-xl text-gray-600">
+              You save: {formatPrice(discountedAmount)}
+              <span className="text-red-600"> (5%)</span>
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <ul className="list-none">
               <li>
-                <strong>Price Range:</strong> {mobileDetails.priceRange}
+                <strong>Screen Size:</strong> {mobile.screenSize}
               </li>
               <li>
-                <strong>Screen Size:</strong> {mobileDetails.screenSize}
+                <strong>Storage Capacity:</strong> {mobile.storageCapacity}
               </li>
               <li>
-                <strong>Storage Capacity:</strong>{" "}
-                {mobileDetails.storageCapacity}
+                <strong>Processor:</strong> {mobile.processor}
               </li>
               <li>
-                <strong>Processor:</strong> {mobileDetails.processor}
-              </li>
-              <li>
-                <strong>Battery Capacity:</strong>{" "}
-                {mobileDetails.batteryCapacity}
+                <strong>Battery Capacity:</strong> {mobile.batteryCapacity}
               </li>
               <li>
                 <strong>Operating System:</strong>{" "}
-                {mobileDetails.operatingSystem || "N/A"}
+                {mobile.operatingSystem || "N/A"}
               </li>
             </ul>
-
-            <div className="flex items-center mt-6 space-x-4 lg:flex-wrap">
-              <div>
-                <strong>Quantity:</strong>
-              </div>
-              <button
-                onClick={handleDecrease}
-                className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-l"
-              >
-                -
-              </button>
-              <span className="bg-white text-black font-bold py-2 px-4 border border-gray-300 rounded">
-                {quantity}
-              </span>
-              <button
-                onClick={handleIncrease}
-                className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-r"
-              >
-                +
-              </button>
-              <div className="flex items-center">
-                ({formatPrice(discountedPrice * quantity)})
-              </div>
-            </div>
-
-            <button className="bg-orange-300 hover:bg-orange-400 text-white px-4 py-2 rounded-lg mt-4 transition duration-300 ease-in-out transform hover:scale-105">
-              Add to Cart
-            </button>
           </div>
+
+          <div className="flex items-center mt-6 space-x-4">
+            <div>
+              <strong>Quantity:</strong>
+            </div>
+            <button
+              onClick={handleDecrease}
+              className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-l"
+            >
+              -
+            </button>
+            <span>{quantity}</span>
+            <button
+              onClick={handleIncrease}
+              className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-r"
+            >
+              +
+            </button>
+            <div>({formatPrice(discountedPrice * quantity)})</div>
+          </div>
+
+          <button
+            onClick={handleAddToCart} // Handle Add to Cart
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded mt-6"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
+      {/* Toggle for Specifications and Reviews */}
       <div className="flex flex-col justify-center space-x-4 mt-8 lg:ml-20">
         <div>
           <button
@@ -155,13 +160,13 @@ const MobilesDetails = () => {
         </div>
 
         {showSpecifications ? (
-          <MobileSpecification mobile={mobileDetails} />
+          <MobileSpecification mobile={mobile} /> // Display mobile specifications
         ) : (
-          <Reviews mobile={mobileDetails} />
+          <Reviews product={mobile} /> // Display mobile reviews
         )}
       </div>
     </div>
   );
 };
 
-export default MobilesDetails;
+export default MobileDetails;

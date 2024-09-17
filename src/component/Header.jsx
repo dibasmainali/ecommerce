@@ -5,7 +5,11 @@ import { faShoppingCart, faBars, faTimes } from '@fortawesome/free-solid-svg-ico
 import { CartContext } from './CartContext'; // Import CartContext
 
 const Header = () => {
-  const { cartItemCount } = useContext(CartContext); // Get cartItemCount from context
+  const { cartItems } = useContext(CartContext); // Access cartItems from context
+
+  // Calculate total number of items in the cart
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
