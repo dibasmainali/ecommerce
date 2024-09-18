@@ -1,6 +1,6 @@
 const monitors = [
     {
-      id: 1,
+      id: 41,
       name: "Dell UltraSharp U2720Q",
       price: "$600",
       screenSize: '27"',
@@ -11,7 +11,7 @@ const monitors = [
         "The Dell UltraSharp U2720Q features a 27\" 4K UHD IPS display, offering stunning color accuracy and wide viewing angles. Ideal for professionals who require precise color reproduction.",
     },
     {
-      id: 2,
+      id: 42,
       name: "LG 34WN80C-B",
       price: "$700",
       screenSize: '34"',
@@ -22,7 +22,7 @@ const monitors = [
         'The LG 34WN80C-B is a 34" ultrawide monitor with a WQHD resolution and IPS panel. It provides an immersive viewing experience with excellent color accuracy, perfect for multitasking and creative work.',
     },
     {
-      id: 3,
+      id: 43,
       name: "ASUS ROG Swift PG279Q",
       price: "$800",
       screenSize: '27"',
@@ -33,7 +33,7 @@ const monitors = [
         'The ASUS ROG Swift PG279Q features a 27" QHD IPS display with a 165Hz refresh rate and G-SYNC technology. It is designed for gamers who demand smooth and responsive gameplay.',
     },
     {
-      id: 4,
+      id: 44,
       name: "Samsung Odyssey G7",
       price: "$700",
       screenSize: '32"',
@@ -44,7 +44,7 @@ const monitors = [
         'The Samsung Odyssey G7 is a 32" curved gaming monitor with a QHD resolution and 240Hz refresh rate. Its VA panel offers deep blacks and high contrast, enhancing the gaming experience.',
     },
     {
-      id: 5,
+      id: 45,
       name: "Acer Predator X27",
       price: "$1,800",
       screenSize: '27"',
@@ -55,7 +55,7 @@ const monitors = [
         'The Acer Predator X27 features a 27" 4K UHD IPS display with HDR support and a 144Hz refresh rate. It is designed for gamers and content creators who need top-tier performance and visuals.',
     },
     {
-      id: 6,
+      id: 46,
       name: "BenQ PD3200U",
       price: "$700",
       screenSize: '32"',
@@ -66,7 +66,7 @@ const monitors = [
         'The BenQ PD3200U is a 32" 4K UHD monitor with an IPS panel, offering excellent color accuracy and factory calibration. It is ideal for designers and photographers who require precise color reproduction.',
     },
     {
-      id: 7,
+      id: 47,
       name: "HP Omen X 27",
       price: "$500",
       screenSize: '27"',
@@ -77,7 +77,7 @@ const monitors = [
         'The HP Omen X 27 features a 27" QHD display with a 240Hz refresh rate and a TN panel. It is designed for competitive gamers who need fast response times and smooth gameplay.',
     },
     {
-      id: 8,
+      id: 48,
       name: "ViewSonic VP3881",
       price: "$1,000",
       screenSize: '38"',
@@ -88,7 +88,7 @@ const monitors = [
         'The ViewSonic VP3881 is a 38" ultrawide monitor with an IPS panel and UWQHD+ resolution. It offers a wide color gamut and is factory calibrated, making it perfect for professional video editing and graphic design.',
     },
     {
-      id: 9,
+      id: 49,
       name: "Gigabyte AORUS FI27Q",
       price: "$600",
       screenSize: '27"',
@@ -99,7 +99,7 @@ const monitors = [
         'The Gigabyte AORUS FI27Q features a 27" QHD IPS display with a 165Hz refresh rate and FreeSync technology. It is designed for gamers who want a balance of performance and visual quality.',
     },
     {
-      id: 10,
+      id: 50,
       name: "MSI Optix MAG272CQR",
       price: "$400",
       screenSize: '27"',

@@ -1,6 +1,6 @@
 const MobileApis = [
   {
-    id: 1,
+    id: 21,
     name: "iPhone 13 Pro",
     price: "999",
     screenSize: '6.1"',
@@ -25,7 +25,7 @@ const MobileApis = [
     charging: "20W wired charging, MagSafe wireless charging"
   },
   {
-    id: 2,
+    id: 22,
     name: "Google Pixel 6",
     price: "599",
     screenSize: '6.4"',
@@ -51,7 +51,7 @@ const MobileApis = [
   },
   // Continue adding the remaining data for each mobile...
   {
-    id: 3,
+    id: 23,
     name: "OnePlus 9 Pro",
     price: "969",
     screenSize: '6.7"',
@@ -76,7 +76,7 @@ const MobileApis = [
     charging: "65W wired charging, 50W wireless charging"
   },
   {
-    id: 4,
+    id: 24,
     name: "Samsung Galaxy S21 Ultra",
     price: "1,199",
     screenSize: '6.8"',
@@ -101,7 +101,7 @@ const MobileApis = [
     charging: "25W wired, 15W wireless, reverse wireless"
   },
   {
-    id: 5,
+    id: 25,
     name: "Xiaomi Mi 11",
     price: "749",
     screenSize: '6.81"',
@@ -126,7 +126,7 @@ const MobileApis = [
     charging: "55W wired, 50W wireless"
   },
   {
-    id: 6,
+    id: 26,
     name: "Sony Xperia 1 III",
     price: "1,299",
     screenSize: '6.5"',
@@ -151,7 +151,7 @@ const MobileApis = [
     charging: "30W wired, wireless charging"
   },
   {
-    id: 7,
+    id: 27,
     name: "Oppo Find X3 Pro",
     price: "1,149",
     screenSize: '6.7"',
@@ -176,7 +176,7 @@ const MobileApis = [
     charging: "65W wired, 30W wireless"
   },
   {
-    id: 8,
+    id: 28,
     name: "Huawei Mate 40 Pro",
     price: "1,099",
     screenSize: '6.76"',
@@ -201,7 +201,7 @@ const MobileApis = [
     charging: "66W wired, 50W wireless"
   },
   {
-    id: 9,
+    id: 29,
     name: "Realme GT Neo 2",
     price: "499",
     screenSize: '6.62"',
@@ -226,7 +226,7 @@ const MobileApis = [
     charging: "65W wired"
   },
   {
-    id: 10,
+    id: 30,
     name: "Vivo X70 Pro+",
     price: "1,199",
     screenSize: '6.78"',
@@ -251,7 +251,7 @@ const MobileApis = [
     charging: "55W wired, 50W wireless"
   },
   {
-    id: 11,
+    id: 31,
     name: "Google Pixel 6 Pro",
     price: "899",
     screenSize: '6.71"',
@@ -276,7 +276,7 @@ const MobileApis = [
     charging: "30W wired, 23W wireless"
   },
   {
-    id: 12,
+    id: 32,
     name: "OnePlus 9 Pro",
     price: "969",
     screenSize: '6.7"',
@@ -301,7 +301,7 @@ const MobileApis = [
     charging: "65W wired, 50W wireless"
   },
   {
-    id: 13,
+    id: 33,
     name: "Asus ROG Phone 5",
     price: "999",
     screenSize: '6.78"',
@@ -326,7 +326,7 @@ const MobileApis = [
     charging: "65W wired"
   },
   {
-    id: 14,
+    id: 34,
     name: "Motorola Edge 20 Pro",
     price: "699",
     screenSize: '6.7"',
@@ -351,7 +351,7 @@ const MobileApis = [
     charging: "30W wired"
   },
   {
-    id: 15,
+    id: 35,
     name: "ZTE Axon 30 Ultra",
     price: "749",
     screenSize: '6.67"',
@@ -376,7 +376,7 @@ const MobileApis = [
     charging: "65W wired"
   },
   {
-    id: 16,
+    id: 36,
     name: "Nokia XR20",
     price: "549",
     screenSize: '6.67"',
@@ -401,7 +401,7 @@ const MobileApis = [
     charging: "18W wired, 15W wireless"
   },
   {
-    id: 17,
+    id: 37,
     name: "Sony Xperia 1 III",
     price: "1,299",
     screenSize: '6.5"',
@@ -426,7 +426,7 @@ const MobileApis = [
     charging: "30W wired, 15W wireless"
   },
   {
-    id: 18,
+    id: 38,
     name: "Realme GT Master",
     price: "399",
     screenSize: '6.43"',
@@ -451,7 +451,7 @@ const MobileApis = [
     charging: "65W wired"
   },
   {
-    id: 19,
+    id: 39,
     name: "Oppo Find X3 Pro",
     price: "1,149",
     screenSize: '6.7"',
@@ -476,7 +476,7 @@ const MobileApis = [
     charging: "65W wired, 30W wireless"
   },
   {
-    id: 20,
+    id: 40,
     name: "Xiaomi Mi 11 Ultra",
     price: "1,199",
     screenSize: '6.81"',

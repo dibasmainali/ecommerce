@@ -14,9 +14,9 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold mb-2">Support</h3>
           <ul>
-            <li><Link to="/faq" className="hover:underline">FAQ</Link></li>
-            <li><Link to="/payment-options" className="hover:underline">Payment Options</Link></li>
-            <li><Link to="/find-store" className="hover:underline">Find our store</Link></li>
+            <li><Link to="#" className="hover:underline">FAQ</Link></li>
+            <li><Link to="#" className="hover:underline">Payment Options</Link></li>
+            <li><Link to="/contact-us" className="hover:underline">Find our store</Link></li>
           </ul>
         </div>
         <div>
@@ -32,8 +32,8 @@ const Footer = () => {
           <h3 className="text-xl font-semibold mb-2">Customer Service</h3>
           <ul>
             <li><Link to="/contact-us" className="hover:underline">Contact Us</Link></li>
-            <li><Link to="/refund-policy" className="hover:underline">Refund & Return Policy</Link></li>
-            <li><Link to="/terms-conditions" className="hover:underline">Terms & Conditions</Link></li>
+            <li><Link to="#" className="hover:underline">Refund & Return Policy</Link></li>
+            <li><Link to="#" className="hover:underline">Terms & Conditions</Link></li>
           </ul>
         </div>
       </div>

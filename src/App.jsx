@@ -10,6 +10,7 @@ import Header from './component/Header';  // Import the Header component
 import Footer from './component/Footer';  // Import the Footer component
 import { CartProvider } from './component/CartContext';
 import Cart from './component/Cart';
+import ContactUs from './component/ContactUs';
 // import Cart from '../component/Cart';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/monitors" element={<Monitor />} />
               <Route path="/monitors/:name" element={<MonitorDetails />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/contact-us" element={<ContactUs/>}/>
             </Routes>
           </main>
 

@@ -48,7 +48,7 @@ const LaptopDetails = () => {
     addToCart({
       id: laptop.id,
       name: laptop.name,
-      price: discountedPrice * quantity, // Use discounted price and multiply by quantity
+      price: discountedPrice, // Use discounted price and multiply by quantity
       imageUrl: laptop.imageUrl,
       quantity: quantity, // Pass the correct quantity
     });

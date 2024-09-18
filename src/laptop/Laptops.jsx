@@ -49,6 +49,9 @@ const Laptops = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Breadcrumb />
+      <h1 className="flex justify-end items-center text-gray-400 text-1xl">
+        Quality is what we offer
+      </h1>
       <div className="container mx-auto px-4 md:px-8 mt-8">
         <img
           src="https://i.pinimg.com/originals/ef/80/83/ef8083bfe79088dc00bd8eca9c821cd5.jpg"
