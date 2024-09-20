@@ -68,7 +68,7 @@ const Laptops = () => {
               type="text"
               placeholder="Search for a laptop..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)} 
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full md:w-auto p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
@@ -146,18 +146,18 @@ const Laptops = () => {
                       addToCart({
                         id: laptop.id,
                         name: laptop.name,
-                        price: laptop.price.replace(',',' '), // Assuming price is part of the price
+                        price: laptop.price.replace(",", " "), // Assuming price is part of the price
                         imageUrl: laptop.imageUrl,
                         quantity: 1, // Default quantity to 1
                       })
                     }
-                    className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-50"
+                    className="bg-blue-400 hover:bg-blue-500 text-white font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
                   >
                     Add to Cart
                   </button>
                   <Link to={`/laptops/${laptop.name.replace(/\s+/g, "-")}`}>
-                    <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50">
-                      View Details
+                  <button className="bg-purple-400 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
+                  View Details
                     </button>
                   </Link>
                 </div>

@@ -278,7 +278,7 @@ const Mobiles = () => {
         </div>
 
         {/* Mobile Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {displayedMobiles.length > 0 ? (
             displayedMobiles.map((mobile) => (
               <div
@@ -300,7 +300,7 @@ const Mobiles = () => {
                 {/* Mobile Specifications */}
                 <ul className="text-sm md:text-base text-gray-600">
                   <li>
-                    <strong>Price Range: </strong> {mobile.price}
+                    <strong>Price Range: $ </strong> {mobile.price}
                   </li>
                   <li>
                     <strong>Screen Size:</strong> {mobile.screenSize}
@@ -314,7 +314,7 @@ const Mobiles = () => {
                 </ul>
 
                 {/* Add to Cart and View Details Buttons */}
-                <div className="flex justify-between items-center mt-4 space-x-2">
+                <div className="flex flex-col gap-6 justify-between items-center mt-4 space-x-2 lg:flex-row md:flex-row">
                   <button
                     onClick={() =>
                       addToCart({

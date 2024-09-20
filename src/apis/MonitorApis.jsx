@@ -2,7 +2,7 @@ const monitors = [
     {
       id: 41,
       name: "Dell UltraSharp U2720Q",
-      price: "$600",
+      price: "600",
       screenSize: '27"',
       resolution: "3840 x 2160 (4K UHD)",
       panelType: "IPS",
@@ -13,7 +13,7 @@ const monitors = [
     {
       id: 42,
       name: "LG 34WN80C-B",
-      price: "$700",
+      price: "700",
       screenSize: '34"',
       resolution: "3440 x 1440 (WQHD)",
       panelType: "IPS",
@@ -24,7 +24,7 @@ const monitors = [
     {
       id: 43,
       name: "ASUS ROG Swift PG279Q",
-      price: "$800",
+      price: "800",
       screenSize: '27"',
       resolution: "2560 x 1440 (QHD)",
       panelType: "IPS",
@@ -35,7 +35,7 @@ const monitors = [
     {
       id: 44,
       name: "Samsung Odyssey G7",
-      price: "$700",
+      price: "700",
       screenSize: '32"',
       resolution: "2560 x 1440 (QHD)",
       panelType: "VA",
@@ -46,7 +46,7 @@ const monitors = [
     {
       id: 45,
       name: "Acer Predator X27",
-      price: "$1,800",
+      price: "1,800",
       screenSize: '27"',
       resolution: "3840 x 2160 (4K UHD)",
       panelType: "IPS",
@@ -57,7 +57,7 @@ const monitors = [
     {
       id: 46,
       name: "BenQ PD3200U",
-      price: "$700",
+      price: "700",
       screenSize: '32"',
       resolution: "3840 x 2160 (4K UHD)",
       panelType: "IPS",
@@ -68,7 +68,7 @@ const monitors = [
     {
       id: 47,
       name: "HP Omen X 27",
-      price: "$500",
+      price: "500",
       screenSize: '27"',
       resolution: "2560 x 1440 (QHD)",
       panelType: "TN",
@@ -79,7 +79,7 @@ const monitors = [
     {
       id: 48,
       name: "ViewSonic VP3881",
-      price: "$1,000",
+      price: "1,000",
       screenSize: '38"',
       resolution: "3840 x 1600 (UWQHD+)",
       panelType: "IPS",
@@ -90,7 +90,7 @@ const monitors = [
     {
       id: 49,
       name: "Gigabyte AORUS FI27Q",
-      price: "$600",
+      price: "600",
       screenSize: '27"',
       resolution: "2560 x 1440 (QHD)",
       panelType: "IPS",
@@ -101,7 +101,7 @@ const monitors = [
     {
       id: 50,
       name: "MSI Optix MAG272CQR",
-      price: "$400",
+      price: "400",
       screenSize: '27"',
       resolution: "2560 x 1440 (QHD)",
       panelType: "VA",

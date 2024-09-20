@@ -11,7 +11,7 @@ import Footer from './component/Footer';  // Import the Footer component
 import { CartProvider } from './component/CartContext';
 import Cart from './component/Cart';
 import ContactUs from './component/ContactUs';
-// import Cart from '../component/Cart';
+import ConfirmOrder from './component/ConfirmOrder';
 
 const App = () => {
   return (
@@ -31,6 +31,7 @@ const App = () => {
               <Route path="/monitors/:name" element={<MonitorDetails />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/contact-us" element={<ContactUs/>}/>
+              <Route path="/order-confirmation" element={<ConfirmOrder/>}/>
             </Routes>
           </main>
 

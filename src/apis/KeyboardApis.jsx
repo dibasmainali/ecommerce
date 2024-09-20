@@ -3,7 +3,7 @@ const keyboard = [
     id: 51,
     code: "keyboard",
     name: "Logitech MX Keys",
-    priceRange: "$99",
+    priceRange: "99",
     type: "Wireless",
     features: "Low-profile keys, backlit keys, USB-C rechargeable battery",
     imageUrl: "https://via.placeholder.com/300x200?text=Logitech+MX+Keys",
@@ -14,7 +14,7 @@ const keyboard = [
     id: 52,
     code: "keyboard",
     name: "Corsair K95 RGB Platinum XT",
-    priceRange: "$199",
+    priceRange: "199",
     type: "Mechanical",
     features:
       "Cherry MX Speed switches, dynamic RGB backlighting, six programmable macro keys",
@@ -27,7 +27,7 @@ const keyboard = [
     id: 53,
     code: "keyboard",
     name: "Razer BlackWidow V3 Pro",
-    priceRange: "$229",
+    priceRange: "229",
     type: "Wireless Mechanical",
     features:
       "Razer Green mechanical switches, RGB Chroma backlighting, detachable wrist rest",
@@ -40,7 +40,7 @@ const keyboard = [
     id: 54,
     code: "mouse",
     name: "Logitech MX Master 3",
-    priceRange: "$99",
+    priceRange: "99",
     type: "Wireless",
     features:
       "MagSpeed scroll wheel, ergonomic design, USB-C rechargeable battery",
@@ -52,7 +52,7 @@ const keyboard = [
     id: 55,
     code: "mouse",
     name: "Razer DeathAdder V2",
-    priceRange: "$69",
+    priceRange: "69",
     type: "Wired",
     features:
       "Razer Optical switches, ergonomic shape, high-precision 20,000 DPI sensor",
@@ -64,7 +64,7 @@ const keyboard = [
     id: 56,
     code: "mouse",
     name: "SteelSeries Rival 600",
-    priceRange: "$79",
+    priceRange: "79",
     type: "Wired",
     features: "Dual sensor system, customizable weight system, RGB lighting",
     imageUrl: "https://via.placeholder.com/300x200?text=SteelSeries+Rival+600",
