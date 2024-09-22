@@ -18,9 +18,9 @@ const App = () => {
     <CartProvider>
       <Router>
         <div className="min-h-screen bg-gray-50 flex flex-col justify-between">
-          <Header /> {/* Use the Header component here */}
+          <Header />  
 
-          <main className="container mx-auto p-6 flex-grow">
+          <main className="container mx-auto p-6   flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/laptops" element={<Laptop />} />
@@ -35,7 +35,7 @@ const App = () => {
             </Routes>
           </main>
 
-          <Footer /> {/* Add Footer at the bottom */}
+          <Footer /> 
         </div>
       </Router>
     </CartProvider>

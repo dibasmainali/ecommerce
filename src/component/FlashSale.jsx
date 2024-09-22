@@ -26,7 +26,7 @@ const FlashSale = () => {
   };
 
   return (
-    <div className="bg-blue-100 p-6 rounded-lg mb-8 text-center">
+    <div className="bg-blue-100 p-4 rounded-lg mb-8 text-center">
       <div>
         <img
           src="https://media.istockphoto.com/id/1401375760/vector/flash-sale-limited-time-banner.jpg?s=612x612&w=0&k=20&c=l4jsKGP3ZIAy-pji4hsbedL_dVZOaPiWfYNocwVMRhQ="

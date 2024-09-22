@@ -1,5 +1,3 @@
-// src/components/KeyboardDetails.jsx
-
 import React from 'react';
 
 const KeyboardDetails = ({ keyboard }) => {

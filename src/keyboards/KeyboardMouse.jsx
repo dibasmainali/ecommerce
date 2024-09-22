@@ -1,5 +1,3 @@
-// src/components/Keyboards.jsx
-
 import React from 'react';
 import KeyboardDetails from './KeyboardDetails';
 import MouseDetails from './MouseDetails';

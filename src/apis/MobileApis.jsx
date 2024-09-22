@@ -76,30 +76,31 @@ const MobileApis = [
     charging: "65W wired charging, 50W wireless charging"
   },
   {
-    id: 24,
-    name: "Samsung Galaxy S21 Ultra",
-    price: "1,199",
-    screenSize: '6.8"',
-    displayType: "Dynamic AMOLED 2X, 120Hz, HDR10+",
+    id: 38,
+    name: "Samsung Galaxy S24",
+    price: "1299",
+    screenSize: '6.2"',
+    displayType: "Dynamic LTPO AMOLED 2X, 120Hz, HDR10+, 2600 nits (peak)",
     storageCapacity: "128GB/256GB/512GB",
-    ram: "12GB/16GB",
-    processor: "Exynos 2100 / Snapdragon 888",
-    imageUrl: "https://via.placeholder.com/300x200?text=Samsung+Galaxy+S21+Ultra",
-    description: 'The Samsung Galaxy S21 Ultra is packed with a 6.8" Dynamic AMOLED 2X display, a top-tier camera setup, and massive battery life, offering an exceptional premium experience.',
-    weight: "228g (8.04 oz)",
-    colors: ["Phantom Black", "Phantom Silver"],
-    material: "Gorilla Glass Victus (front and back), aluminum frame",
+    ram: "8GB/12GB",
+    processor: "Snapdragon 8 Gen 3",
+    imageUrl: "https://via.placeholder.com/300x200?text=Samsung+Galaxy+S24",
+    description: 'Samsung Galaxy S24 features a vibrant Dynamic LTPO AMOLED 2X display with a 120Hz refresh rate and HDR10+ support, delivering stunning visuals and smooth performance.',
+    weight: "167g (5.89 oz)",
+    colors: ["Onyx Black", "Marble Grey", "Cobalt Violet", "Amber Yellow", "Jade Green", "Sandstone Orange", "Sapphire Blue"],
+    material: "Gorilla Glass Victus 2 (front and back), aluminum frame",
     waterResistance: "IP68 dust/water resistant (up to 1.5m for 30 mins)",
-    simType: "Nano-SIM and eSIM",
+    simType: "Nano-SIM and eSIM/Dual eSIM or Dual SIM (2 Nano-SIMs and eSIM, dual stand-by)",
     camera: {
-      mainCamera: "Quad - 108 MP (wide), 10 MP (periscope telephoto), 10 MP (telephoto), 12 MP (ultrawide)",
-      selfieCamera: "40 MP (wide)",
+      mainCamera: "Triple - 50 MP (wide), 10 MP (telephoto), 12 MP (ultrawide)",
+      selfieCamera: "12 MP (wide)",
       features: "LED flash, auto-HDR, panorama",
-      video: "8K@24fps (main), 4K@30/60fps (selfie)"
+      video: "8K@24/30fps (main), 4K@30/60fps (selfie)"
     },
-    batteryCapacity: "5000mAh",
-    charging: "25W wired, 15W wireless, reverse wireless"
+    batteryCapacity: "4000mAh",
+    charging: "25W wired, 15W wireless"
   },
+  
   {
     id: 25,
     name: "Xiaomi Mi 11",

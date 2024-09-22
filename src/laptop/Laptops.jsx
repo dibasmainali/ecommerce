@@ -1,32 +1,39 @@
-// export default Laptops;
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Apis from "../apis/LaptopApi.jsx"; // Correct path to import the laptop data
-import Breadcrumb from "../component/Breadcrumb.jsx";
-import { CartContext } from "../component/CartContext"; // Import CartContext
+import Apis from "../apis/LaptopApi.jsx"; // Importing the Laptop API
+import Breadcrumb from "../component/Breadcrumb.jsx"; // Importing Breadcrumb component
+import { CartContext } from "../component/CartContext"; // Importing CartContext for cart operations
 
 const Laptops = () => {
-  const [laptopData, setLaptopData] = useState([]); // State for laptop data
-  const [searchQuery, setSearchQuery] = useState(""); // State to handle search input
-  const [showAll, setShowAll] = useState(false); // State to manage showing all laptops
-  const [sortOption, setSortOption] = useState(""); // State to manage sorting option
-  const { addToCart } = useContext(CartContext); // Use CartContext to get addToCart function
+  // State to hold laptop data from API
+  const [laptopData, setLaptopData] = useState([]);
+  // State for search query input
+  const [searchQuery, setSearchQuery] = useState("");
+  // State to control whether all laptops are shown or just a few
+  const [showAll, setShowAll] = useState(false);
+  // State for sorting option (price low-to-high, high-to-low)
+  const [sortOption, setSortOption] = useState("");
+  // Accessing addToCart function from CartContext
+  const { addToCart } = useContext(CartContext);
 
-  // Load laptop data on component mount
+  // Effect to set laptop data from API when the component mounts
   useEffect(() => {
     if (Apis) {
       setLaptopData(Apis);
-    } else {
-      console.error("Failed to load laptop data.");
     }
   }, []);
 
-  // Filtered laptop data based on search query
+  // Effect to scroll to top of the page on component load
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  // Filtering laptops based on the search query
   const filteredLaptops = laptopData.filter((laptop) =>
     laptop.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Sort laptops by price based on selected sort option
+  // Sorting laptops based on the selected sort option (low-to-high or high-to-low)
   const sortedLaptops = filteredLaptops.sort((a, b) => {
     const priceA = parseFloat(
       a.price.split("-")[0].replace("$", "").replace(",", "")
@@ -36,33 +43,38 @@ const Laptops = () => {
     );
 
     if (sortOption === "low-to-high") {
-      return priceA - priceB; // Sort by price low to high
+      return priceA - priceB;
     } else if (sortOption === "high-to-low") {
-      return priceB - priceA; // Sort by price high to low
+      return priceB - priceA;
     }
-    return 0; // No sorting if no option is selected
+    return 0;
   });
 
-  // Determine laptops to display (either all or a limited number)
+  // Control how many laptops are shown (if showAll is true, show all; else, show 6)
   const displayedLaptops = showAll ? sortedLaptops : sortedLaptops.slice(0, 6);
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      {/* Breadcrumb navigation */}
       <Breadcrumb />
+      
+      {/* Page header */}
       <h1 className="flex justify-end items-center text-gray-400 text-1xl">
         Quality is what we offer
       </h1>
+
+      {/* Banner Image */}
       <div className="container mx-auto px-4 md:px-8 mt-8">
         <img
           src="https://i.pinimg.com/originals/ef/80/83/ef8083bfe79088dc00bd8eca9c821cd5.jpg"
           alt=""
-          className="w-full lg:h[0px] px-4 md:px-8"
+          className="w-full  lg:h-[300px] px-4 md:px-8 bg-contain"
         />
       </div>
 
       <div className="container mx-auto px-4 md:px-8 mt-8">
-        {/* Search Bar */}
         <div className="mb-4 flex flex-wrap justify-between items-center mt-7 px-4 md:px-8">
+          {/* Search Bar */}
           <div className="flex items-center">
             <input
               type="text"
@@ -80,7 +92,7 @@ const Laptops = () => {
                       .includes(searchQuery.toLowerCase())
                   )
                 )
-              } // Trigger search when button is clicked
+              }
               className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-r-lg transition duration-300 ease-in-out transform hover:scale-105 ring-blue-500"
             >
               Search
@@ -91,7 +103,7 @@ const Laptops = () => {
           <div className="mb-4">
             <select
               value={sortOption}
-              onChange={(e) => setSortOption(e.target.value)} // Update sort option state
+              onChange={(e) => setSortOption(e.target.value)}
               className="w-full md:w-auto p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-700"
             >
               <option value="" disabled>
@@ -103,7 +115,7 @@ const Laptops = () => {
           </div>
         </div>
 
-        {/* Laptop Products Grid */}
+        {/* Displaying the laptops in a grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {displayedLaptops.length > 0 ? (
             displayedLaptops.map((laptop) => (
@@ -123,7 +135,7 @@ const Laptops = () => {
                   {laptop.name}
                 </h2>
 
-                {/* Laptop Specifications */}
+                {/* Laptop Details */}
                 <ul className="text-sm md:text-base text-gray-600">
                   <li>
                     <strong>Price Range: $</strong> {laptop.price}
@@ -139,25 +151,26 @@ const Laptops = () => {
                   </li>
                 </ul>
 
-                {/* Add to Cart and View Details Buttons */}
+                {/* Buttons for adding to cart and viewing details */}
                 <div className="flex justify-between items-center mt-4 space-x-2">
                   <button
                     onClick={() =>
                       addToCart({
                         id: laptop.id,
                         name: laptop.name,
-                        price: laptop.price.replace(",", " "), // Assuming price is part of the price
+                        price: laptop.price.replace(",", " "),
                         imageUrl: laptop.imageUrl,
-                        quantity: 1, // Default quantity to 1
+                        quantity: 1,
                       })
                     }
                     className="bg-blue-400 hover:bg-blue-500 text-white font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
                   >
                     Add to Cart
                   </button>
+                  {/* Link to laptop details page */}
                   <Link to={`/laptops/${laptop.name.replace(/\s+/g, "-")}`}>
-                  <button className="bg-purple-400 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
-                  View Details
+                    <button className="bg-purple-400 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
+                      View Details
                     </button>
                   </Link>
                 </div>
@@ -170,10 +183,10 @@ const Laptops = () => {
           )}
         </div>
 
-        {/* Show All/Show Less Button */}
+        {/* Show All / Show Less Button */}
         <div className="text-center mt-8">
           <button
-            onClick={() => setShowAll(!showAll)} // Toggle showing all or limited laptops
+            onClick={() => setShowAll(!showAll)}
             className="bg-orange-700 hover:bg-orange-800 text-white font-semibold px-6 py-3 rounded transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-700 focus:ring-opacity-50"
           >
             {showAll ? "Show Less" : "Show All"}

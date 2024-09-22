@@ -26,15 +26,15 @@ const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 shadow-lg">
+    <header className="header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 md:p-6 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img 
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgrMwmvwMMgoMRQJMHeMDWnWPrr3WzuWILAA&s" 
             alt="Tech Store Logo" 
-            className="h-12 w-12 mr-4" 
+            className="h-10 w-10 md:h-12 md:w-12 mr-2 md:mr-4" 
           />
-          <h1 className="text-4xl font-bold">Tech Store</h1>
+          <h1 className="text-2xl md:text-4xl font-bold">Tech Store</h1>
         </div>
         <div className="hidden md:flex md:items-center space-x-4">
           <Link to="/" className="text-lg hover:underline">Home</Link>
