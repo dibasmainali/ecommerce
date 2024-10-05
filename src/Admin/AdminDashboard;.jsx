@@ -44,7 +44,7 @@ const AdminDashboard = () => {
 
           {/* Routes */}
           <Routes>
-            <Route exact path="/" element={
+            <Route exact path="/Dashboard" element={
               <div>
                 {/* <h2 className="text-2xl font-semibold mb-4">Dashboard</h2> */}
                 <header className="flex justify-between items-center mb-6">
