@@ -92,34 +92,40 @@ const Cart = () => {
                     <p>{formatPrice(parsePrice(item.price))}</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4 ml-4">
-                  <div>
-                    <strong>Quantity:</strong>
+                <div className="flex flex-col lg:flex-row gap-3">
+                  <div className="flex items-center space-x-4 ml-4">
+                    <div>
+                      <strong>Quantity:</strong>
+                    </div>
+                    {/* Decrease quantity button */}
+                    <button
+                      onClick={() => handleDecrease(item)}
+                      className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-l"
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    {/* Increase quantity button */}
+                    <button
+                      onClick={() => handleIncrease(item)}
+                      className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-r"
+                    >
+                      +
+                    </button>
+
+                    {/* Display price for the current item based on quantity */}
+                    <p>{formatPrice(parsePrice(item.price) * item.quantity)}</p>
                   </div>
-                  {/* Decrease quantity button */}
-                  <button
-                    onClick={() => handleDecrease(item)}
-                    className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-l"
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  {/* Increase quantity button */}
-                  <button
-                    onClick={() => handleIncrease(item)}
-                    className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded-r"
-                  >
-                    +
-                  </button>
-                  {/* Display price for the current item based on quantity */}
-                  <p>{formatPrice(parsePrice(item.price) * item.quantity)}</p>
+
                   {/* Remove item button */}
-                  <button
-                    onClick={() => handleRemoveItem(item.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
-                  >
-                    Remove
-                  </button>
+                  <div>
+                    <button
+                      onClick={() => handleRemoveItem(item.id)}
+                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </li>
             ))}

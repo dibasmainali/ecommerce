@@ -50,7 +50,7 @@ const Mobiles = () => {
   const displayedMobiles = showAll ? sortedMobiles : sortedMobiles.slice(0, 9);
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-blue-50 min-h-screen">
       <Breadcrumb />
 
       <h1 className="flex justify-end items-center text-gray-400 text-1xl">

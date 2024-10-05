@@ -185,6 +185,8 @@ import { Link } from "react-router-dom";
 import MonitorApis from "../apis/MonitorApis.jsx"; // Importing monitor data
 import Breadcrumb from "../component/Breadcrumb.jsx";
 import { CartContext } from "../component/CartContext"; // Import CartContext
+import monitor from "../Asset/monitor.mp4"; // import videohidden lg:block
+
 
 const Monitors = () => {
   const [monitorData, setMonitorData] = useState([]); // State for monitor data
@@ -228,7 +230,7 @@ const Monitors = () => {
   const displayedMonitors = showAll ? sortedMonitors : sortedMonitors.slice(0, 9);
 
   return (
-    <div>
+    <div className="bg-blue-50 min-h-screen">
       <Breadcrumb />
 
       <h1 className="flex justify-end items-center text-gray-400 text-1xl">
@@ -236,47 +238,69 @@ const Monitors = () => {
       </h1>
 
       <div className="container mx-auto px-4 md:px-8 mt-8">
-        <div>
+        <div className="hidden lg:block">
           <img
             src="https://www.asus.com/WebsitesBanner/global/banners/n1auaqbmjnfseec9/n1auaqbmjnfseec9-0_0_desktop_0_1X.jpg"
             alt="Monitor Banner"
             className="w-full h-64 object-cover mb-6 rounded-lg shadow-lg"
           />
         </div>
+        <div className="container mx-auto px-4 md:px-8 mt-8 lg:hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          className="w-full h-auto lg:h-[300px] bg-contain"
+        >
+          <source src={monitor} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
         {/* Search Bar */}
-        <div className="flex justify-between items-center">
-        <div className="mb-6 ">
-          <input
-            type="text"
-            placeholder="Search for a monitor..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full md:w-2/3 p-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button className="bg-purple-400 hover:bg-purple-500 text-white font-semibold py-3 px-4 rounded-lg transition ease-in-out ml-2 shadow-lg">
-            Search
-          </button>
-        </div>
+        <div className="mb-4 flex flex-wrap justify-between items-center mt-7 px-4 md:px-8">
+          {/* Search Bar */}
+          <div className="flex items-center">
+            <input
+              type="text"
+              placeholder="Search for a monitor..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full md:w-auto p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              onClick={() =>
+                setmonitorData(
+                  Apis.filter((monitor) =>
+                    monitor.name
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase())
+                  )
+                )
+              }
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-r-lg transition duration-300 ease-in-out transform hover:scale-105 ring-blue-500"
+            >
+              Search
+            </button>
+          </div>
 
-        {/* Sort Dropdown */}
-        <div className="mb-6">
-          <select
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            className="p-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black-700"
-          >
-            <option value="" disabled>
-              Sort by
-            </option>
-            <option value="low-to-high">Price: Low to High</option>
-            <option value="high-to-low">Price: High to Low</option>
-          </select>
+          {/* Sort Dropdown */}
+          <div className="mb-4">
+            <select
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              className="w-full md:w-auto p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-700"
+            >
+              <option value="" disabled>
+                Sort by
+              </option>
+              <option value="low-to-high">Price: Low to High</option>
+              <option value="high-to-low">Price: High to Low</option>
+            </select>
+          </div>
         </div>
-        </div>
-
         {/* Monitor Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-3">
           {displayedMonitors.length > 0 ? (
             displayedMonitors.map((monitor) => (
               <div
@@ -316,12 +340,12 @@ const Monitors = () => {
                         quantity: 1, // Default quantity to 1
                       })
                     }
-                    className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition ease-in-out"
+                    className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition ease-in-out md:text-xs"
                   >
                     Add to Cart
                   </button>
                   <Link to={`/monitors/${monitor.name.replace(/\s+/g, "-")}`}>
-                    <button className="bg-purple-400 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition ease-in-out">
+                    <button className="bg-purple-400 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-lg shadow-md transition ease-in-out md:text-xs">
                       View Details
                     </button>
                   </Link>

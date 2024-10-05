@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Apis from "../apis/LaptopApi.jsx"; // Importing the Laptop API
 import Breadcrumb from "../component/Breadcrumb.jsx"; // Importing Breadcrumb component
 import { CartContext } from "../component/CartContext"; // Importing CartContext for cart operations
+import laptop from "../Asset/laptop.mp4"; // import videohidden 
 
 const Laptops = () => {
   // State to hold laptop data from API
@@ -54,22 +55,33 @@ const Laptops = () => {
   const displayedLaptops = showAll ? sortedLaptops : sortedLaptops.slice(0, 6);
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-blue-50 min-h-screen">
       {/* Breadcrumb navigation */}
       <Breadcrumb />
-      
+
       {/* Page header */}
       <h1 className="flex justify-end items-center text-gray-400 text-1xl">
         Quality is what we offer
       </h1>
 
       {/* Banner Image */}
-      <div className="container mx-auto px-4 md:px-8 mt-8">
+      <div className="container mx-auto px-4 md:px-8 mt-8 hidden lg:block">
         <img
           src="https://i.pinimg.com/originals/ef/80/83/ef8083bfe79088dc00bd8eca9c821cd5.jpg"
           alt=""
           className="w-full  lg:h-[300px] px-4 md:px-8 bg-contain"
         />
+      </div>
+      <div className="container mx-auto px-4 md:px-8 mt-8 lg:hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          className="w-full h-auto lg:h-[300px] bg-contain"
+        >
+          <source src={laptop} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 mt-8">
